@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convite pro Rolê no Obeco 🍹</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffdee9, #b5fffc);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: #333;
+      padding: 20px;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 15px;
+      color: #ff4081;
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
+      font-size: 1.1em;
+      margin-bottom: 25px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .box {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      padding: 25px;
+      width: 220px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .name {
+      font-size: 1.3em;
+      font-weight: bold;
+      color: #ff4081;
+      margin-bottom: 10px;
+    }
+
+    .message {
+      font-size: 0.95em;
+      color: #555;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #444;
+      text-align: center;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      background-color: #ff4081;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(255,64,129,0.4);
+    }
+
+    button:hover {
+      background-color: #ff6fa5;
+      transform: scale(1.05);
+    }
+
+    .confirmacao {
+      position: fixed;
+      top: 20px;
+      background-color: #ff4081;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 25px;
+      font-weight: bold;
+      display: none;
+      animation: aparecer 0.8s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    @keyframes aparecer {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="confirmacao" id="mensagemConfirmacao">
+    🎉 Presença confirmada! O rolê no Obeco vai ser lendário! 💃🍻
+  </div>
+
+  <h1>📣 Convite Oficial pro Rolê no Obeco 🎉</h1>
+  <p>Convocação especial para os lendários participantes desse encontro histórico! 💃🍻</p>
+
+  <div class="container">
+    <div class="box">
+      <div class="name">Eliisete 💖</div>
+      <div class="message">Você traz o brilho e a risada que o Obeco precisa! ✨ Bora animar a noite?</div>
+    </div>
+
+    <div class="box">
+      <div class="name">Samara 💫</div>
+      <div class="message">A energia do rolê depende de você! Sem sua presença, a vibe não é a mesma 😚</div>
+    </div>
+
+    <div class="box">
+      <div class="name">Isabella 🌸</div>
+      <div class="message">A rainha da alegria tá convocada! 💃 O Obeco te espera pra mais uma história lendária!</div>
+    </div>
+
+    <div class="box">
+      <div class="name">Christian 🔥</div>
+      <div class="message">O parceiro oficial do rolê! 🕺 Vamos fazer história juntos mais uma vez?</div>
+    </div>
+  </div>
+
+  <button onclick="confirmarRole()">💌 Confirmar Presença</button>
+
+  <footer>💌 Assinado: O fã número 1 do quarteto Obeco Lovers 💖</footer>
+
+  <script>
+    function confirmarRole() {
+      const msg = document.getElementById('mensagemConfirmacao');
+      msg.style.display = 'block';
+      setTimeout(() => {
+        msg.style.display = 'none';
+      }, 4000);
+    }
+  </script>
+
+</body>
+</html>
