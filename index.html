@@ -9,57 +9,66 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #ffdee9, #b5fffc);
+      background: linear-gradient(135deg, #ffb6c1, #b39ddb, #81d4fa);
+      background-size: 300% 300%;
+      animation: bgMove 10s ease infinite;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       min-height: 100vh;
       color: #333;
-      padding: 20px;
+      padding: 30px;
       text-align: center;
-      overflow-x: hidden;
+    }
+
+    @keyframes bgMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     h1 {
-      font-size: 2em;
-      margin-bottom: 15px;
-      color: #ff4081;
-      text-align: center;
+      font-size: 2.2em;
+      color: #fff;
+      text-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      margin-bottom: 10px;
     }
 
     p {
-      text-align: center;
+      color: #fff;
       font-size: 1.1em;
-      margin-bottom: 25px;
+      margin-bottom: 30px;
     }
 
     .container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 25px;
+      max-width: 1000px;
     }
 
     .box {
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 25px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
       padding: 25px;
-      width: 220px;
+      width: 230px;
       text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
+      backdrop-filter: blur(5px);
     }
 
     .box:hover {
       transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
     }
 
     .name {
-      font-size: 1.3em;
+      font-size: 1.4em;
       font-weight: bold;
-      color: #ff4081;
+      color: #8e24aa;
       margin-bottom: 10px;
     }
 
@@ -79,19 +88,21 @@
       transition: 0.3s;
     }
 
-    .sim {
-      background-color: #4caf50;
+    .btn {
       color: white;
     }
 
-    .sim:hover {
-      background-color: #6ad46a;
-      transform: scale(1.05);
+    .claro {
+      background-color: #4caf50;
     }
 
     .nao {
       background-color: #f44336;
-      color: white;
+    }
+
+    .claro:hover {
+      background-color: #6ad46a;
+      transform: scale(1.05);
     }
 
     .nao:hover {
@@ -101,16 +112,17 @@
 
     .confirmados {
       margin-top: 40px;
-      background: white;
-      padding: 20px 30px;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      width: 300px;
+      background: rgba(255,255,255,0.9);
+      padding: 25px 35px;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+      width: 350px;
+      backdrop-filter: blur(5px);
     }
 
     .confirmados h2 {
-      color: #ff4081;
-      margin-bottom: 10px;
+      color: #8e24aa;
+      margin-bottom: 15px;
     }
 
     ul {
@@ -121,63 +133,68 @@
     li {
       padding: 6px 0;
       font-weight: 500;
+      color: #444;
     }
 
     footer {
-      margin-top: 30px;
+      margin-top: 40px;
       font-size: 0.9em;
-      color: #444;
-      text-align: center;
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
   </style>
 </head>
 <body>
 
   <h1>📣 Convite Oficial pro Rolê no Obeco 🎉</h1>
-  <p>Convocação especial para os lendários participantes desse encontro histórico! 💃🍻</p>
+  <p>Chegou a hora do encontro lendário — bora pro Obeco? 💃🍻</p>
 
   <div class="container">
-    <div class="box" data-nome="Eliisete 💖">
-      <div class="name">Eliisete 💖</div>
-      <div class="message">Você traz o brilho e a risada que o Obeco precisa! ✨ Bora animar a noite?</div>
+    <div class="box" data-nome="Elisete 💖">
+      <div class="name">Elisete 💖</div>
+      <div class="message">A mais animada de todas! O Obeco precisa da sua energia boa! ✨</div>
       <div class="botoes">
-        <button class="sim" onclick="confirmarPresenca(this)">CLARO 😎</button>
-        <button class="nao" onclick="negarPresenca(this)">NÃO 😢</button>
+        <button class="btn claro" onclick="togglePresenca(this)">CLARO 😎</button>
       </div>
     </div>
 
-    <div class="box" data-nome="Samara 💫">
-      <div class="name">Juliaoooooo💫</div>
-      <div class="message">A energia do rolê depende de você! Sem sua presença, a vibe não é a mesma 😚</div>
+    <div class="box" data-nome="Juan 😎">
+      <div class="name">Juan 😎</div>
+      <div class="message">O rei das piadas ruins, mas dos bons drinks! 🍻</div>
       <div class="botoes">
-        <button class="sim" onclick="confirmarPresenca(this)">CLARO 😎</button>
-        <button class="nao" onclick="negarPresenca(this)">NÃO 😢</button>
+        <button class="btn claro" onclick="togglePresenca(this)">CLARO 😎</button>
+      </div>
+    </div>
+
+    <div class="box" data-nome="Julião 😂">
+      <div class="name">Julião 😂</div>
+      <div class="message">O responsável por 80% das risadas da noite! 🤣</div>
+      <div class="botoes">
+        <button class="btn claro" onclick="togglePresenca(this)">CLARO 😎</button>
+      </div>
+    </div>
+
+    <div class="box" data-nome="Murilo 🔥">
+      <div class="name">Murilo 🔥</div>
+      <div class="message">O organizador oficial do caos — sem ele, não tem rolê! 😜</div>
+      <div class="botoes">
+        <button class="btn claro" onclick="togglePresenca(this)">CLARO 😎</button>
       </div>
     </div>
 
     <div class="box" data-nome="Isabella 🌸">
       <div class="name">Isabella 🌸</div>
-      <div class="message">A rainha da alegria tá convocada! 💃 O Obeco te espera pra mais uma história lendária!</div>
+      <div class="message">A princesa do Obeco, presença confirmada é sucesso garantido! 💃</div>
       <div class="botoes">
-        <button class="sim" onclick="confirmarPresenca(this)">CLARO 😎</button>
-        <button class="nao" onclick="negarPresenca(this)">NÃO 😢</button>
+        <button class="btn claro" onclick="togglePresenca(this)">CLARO 😎</button>
       </div>
     </div>
 
-    <div class="box" data-nome="Christian 🔥">
-      <div class="name">Christian 🔥</div>
-      <div class="message">O parceiro oficial do rolê! 🕺 Vamos fazer história juntos mais uma vez?</div>
+    <div class="box" data-nome="Christian 💥">
+      <div class="name">Christian 💥</div>
+      <div class="message">Sem ele, a vibe cai pra 50%! 🕺 Bora representar!</div>
       <div class="botoes">
-        <button class="sim" onclick="confirmarPresenca(this)">CLARO 😎</button>
-        <button class="nao" onclick="negarPresenca(this)">NÃO 😢</button>
-      </div>
-    </div>
-  <div class="box" data-nome="Samara 💫">
-      <div class="name">juan💫</div>
-      <div class="message">vai com nois tambem 😚</div>
-      <div class="botoes">
-        <button class="sim" onclick="confirmarPresenca(this)">CLARO 😎</button>
-        <button class="nao" onclick="negarPresenca(this)">NÃO 😢</button>
+        <button class="btn claro" onclick="togglePresenca(this)">CLARO 😎</button>
       </div>
     </div>
   </div>
@@ -189,7 +206,7 @@
     </ul>
   </div>
 
-  <footer>💌 Assinado: O fã número 1 do quarteto Obeco Lovers 💖</footer>
+  <footer>💌 Assinado: O fã número 1 do time Obeco Lovers 💖</footer>
 
   <script>
     const confirmados = new Set();
@@ -209,23 +226,22 @@
       }
     }
 
-    function confirmarPresenca(botao) {
-      const box = botao.closest('.box');
-      const nome = box.getAttribute('data-nome');
-      confirmados.add(nome);
-      atualizarLista();
-    }
-
-    function negarPresenca(botao) {
+    function togglePresenca(botao) {
       const box = botao.closest('.box');
       const nome = box.getAttribute('data-nome');
 
-      // Se a pessoa já disse "não", trocar pra "claro"
-      if (confirmados.has(nome)) {
-        confirmados.delete(nome);
-      } else {
+      if (botao.classList.contains('claro')) {
+        botao.textContent = 'NÃO 😢';
+        botao.classList.remove('claro');
+        botao.classList.add('nao');
         confirmados.add(nome);
+      } else {
+        botao.textContent = 'CLARO 😎';
+        botao.classList.remove('nao');
+        botao.classList.add('claro');
+        confirmados.delete(nome);
       }
+
       atualizarLista();
     }
   </script>
