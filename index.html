@@ -66,90 +66,159 @@
     .message {
       font-size: 0.95em;
       color: #555;
+      margin-bottom: 15px;
     }
 
-    footer {
-      margin-top: 40px;
-      font-size: 0.9em;
-      color: #444;
-      text-align: center;
-    }
-
-    button {
-      margin-top: 30px;
-      padding: 12px 25px;
+    .botoes button {
+      margin: 5px;
+      padding: 10px 20px;
       border: none;
-      border-radius: 30px;
-      background-color: #ff4081;
-      color: white;
-      font-size: 1em;
+      border-radius: 25px;
       cursor: pointer;
+      font-weight: 600;
       transition: 0.3s;
-      box-shadow: 0 4px 10px rgba(255,64,129,0.4);
     }
 
-    button:hover {
-      background-color: #ff6fa5;
+    .sim {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .sim:hover {
+      background-color: #6ad46a;
       transform: scale(1.05);
     }
 
-    .confirmacao {
-      position: fixed;
-      top: 20px;
-      background-color: #ff4081;
+    .nao {
+      background-color: #f44336;
       color: white;
-      padding: 15px 25px;
-      border-radius: 25px;
-      font-weight: bold;
-      display: none;
-      animation: aparecer 0.8s ease;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 
-    @keyframes aparecer {
-      from {opacity: 0; transform: translateY(-20px);}
-      to {opacity: 1; transform: translateY(0);}
+    .nao:hover {
+      background-color: #ff6a5f;
+      transform: scale(1.05);
+    }
+
+    .confirmados {
+      margin-top: 40px;
+      background: white;
+      padding: 20px 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+
+    .confirmados h2 {
+      color: #ff4081;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      padding: 6px 0;
+      font-weight: 500;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #444;
+      text-align: center;
     }
   </style>
 </head>
 <body>
 
-  <div class="confirmacao" id="mensagemConfirmacao">
-    🎉 Presença confirmada! O rolê no Obeco vai ser lendário! 💃🍻
-  </div>
-
   <h1>📣 Convite Oficial pro Rolê no Obeco 🎉</h1>
   <p>Convocação especial para os lendários participantes desse encontro histórico! 💃🍻</p>
 
   <div class="container">
-    <div class="box">
+    <div class="box" data-nome="Eliisete 💖">
       <div class="name">Eliisete 💖</div>
-      <div class="message">filha da outa vamo nessa bosta</div>
+      <div class="message">Você traz o brilho e a risada que o Obeco precisa! ✨ Bora animar a noite?</div>
+      <div class="botoes">
+        <button class="sim" onclick="confirmarPresenca(this)">CLARO 😎</button>
+        <button class="nao" onclick="negarPresenca(this)">NÃO 😢</button>
+      </div>
     </div>
 
+    <div class="box" data-nome="Samara 💫">
+      <div class="name">Samara 💫</div>
+      <div class="message">A energia do rolê depende de você! Sem sua presença, a vibe não é a mesma 😚</div>
+      <div class="botoes">
+        <button class="sim" onclick="confirmarPresenca(this)">CLARO 😎</button>
+        <button class="nao" onclick="negarPresenca(this)">NÃO 😢</button>
+      </div>
+    </div>
 
-    <div class="box">
+    <div class="box" data-nome="Isabella 🌸">
       <div class="name">Isabella 🌸</div>
-      <div class="message">da pra ir nisso aii ou ta dificil</div>
+      <div class="message">A rainha da alegria tá convocada! 💃 O Obeco te espera pra mais uma história lendária!</div>
+      <div class="botoes">
+        <button class="sim" onclick="confirmarPresenca(this)">CLARO 😎</button>
+        <button class="nao" onclick="negarPresenca(this)">NÃO 😢</button>
+      </div>
     </div>
 
-    <div class="box">
+    <div class="box" data-nome="Christian 🔥">
       <div class="name">Christian 🔥</div>
-      <div class="message">01 da desistencia so sai sem os parceiro</div>
+      <div class="message">O parceiro oficial do rolê! 🕺 Vamos fazer história juntos mais uma vez?</div>
+      <div class="botoes">
+        <button class="sim" onclick="confirmarPresenca(this)">CLARO 😎</button>
+        <button class="nao" onclick="negarPresenca(this)">NÃO 😢</button>
+      </div>
     </div>
   </div>
 
-  <button onclick="confirmarRole()">💌 Confirmar Presença</button>
+  <div class="confirmados">
+    <h2>✅ Confirmados pro rolê:</h2>
+    <ul id="listaConfirmados">
+      <li>Ninguém ainda 😅</li>
+    </ul>
+  </div>
 
   <footer>💌 Assinado: O fã número 1 do quarteto Obeco Lovers 💖</footer>
 
   <script>
-    function confirmarRole() {
-      const msg = document.getElementById('mensagemConfirmacao');
-      msg.style.display = 'block';
-      setTimeout(() => {
-        msg.style.display = 'none';
-      }, 4000);
+    const confirmados = new Set();
+
+    function atualizarLista() {
+      const lista = document.getElementById('listaConfirmados');
+      lista.innerHTML = '';
+
+      if (confirmados.size === 0) {
+        lista.innerHTML = '<li>Ninguém ainda 😅</li>';
+      } else {
+        confirmados.forEach(nome => {
+          const li = document.createElement('li');
+          li.textContent = nome;
+          lista.appendChild(li);
+        });
+      }
+    }
+
+    function confirmarPresenca(botao) {
+      const box = botao.closest('.box');
+      const nome = box.getAttribute('data-nome');
+      confirmados.add(nome);
+      atualizarLista();
+    }
+
+    function negarPresenca(botao) {
+      const box = botao.closest('.box');
+      const nome = box.getAttribute('data-nome');
+
+      // Se a pessoa já disse "não", trocar pra "claro"
+      if (confirmados.has(nome)) {
+        confirmados.delete(nome);
+      } else {
+        confirmados.add(nome);
+      }
+      atualizarLista();
     }
   </script>
 
